@@ -6,4 +6,4 @@
 
 Сайко Сабріни
 
-![alt text](https://thumbs.gfycat.com/SlowBelovedEchidna-small.gif|"Hello")
+![Alt text](https://thumbs.gfycat.com/AngelicCriminalFlounder-size_restricted.gif)
