@@ -59,11 +59,16 @@ def rmnvsk_cr():
             break
     return max(r_uv) <= rmnvsk_value
 
-
 while not rmnvsk_cr():
     for i in y_lists:
         i.append((randint(y_min, y_max)))
     m += 1
+    if m > 20:
+        print(
+            "Дисперсія неодноріда при кількості дослідів m = 20\nтому ми не можемо перейти до обчислення коефіцієнтів рівняння регресії")
+        exit()
+
+
 
 mx1, mx2, my = sum(x1) / 3, sum(x2) / 3, sum(avrg_y) / 3
 a1 = sum([i ** 2 for i in x1]) / 3
