@@ -1,5 +1,6 @@
 import random as ran
 from prettytable import PrettyTable
+import time as tm
 
 
 def generate_rivnom(a, b):
@@ -8,14 +9,15 @@ def generate_rivnom(a, b):
 
 
 def main():
+    t1_start = tm.perf_counter()
     a = 0
     b = 20
     x = PrettyTable()
     table = []
-    a_0 = 1
+    a_0 = 4
     a_1 = 1
-    a_2 = 1
-    a_3 = 1
+    a_2 = 2
+    a_3 = 3
     X1 = list()
     X2 = list()
     X3 = list()
@@ -46,16 +48,24 @@ def main():
     x.add_column('Xn2', Xn2)
     x.add_column('Xn3', Xn3)
     et = PrettyTable()
-    et.field_names = ['Yet']
-    et.add_row([Yet])
+    et.field_names = ['X0','dx','Yet']
+    et.add_row([[X01, X02, X03],[dX1, dX2, dX3],Yet])
     maximum = PrettyTable()
     index = Y.index(max(Y))
     max_list = [X1[index], X2[index], X3[index]]
     maximum.field_names = ['', 'X1 X2 X3', 'Y']
     maximum.add_row(['max(Y):', max_list, max(Y)])
     print(x)
+    print("Function: y=", a_0, "+", a_1, "* X1", "+", a_2, "* X2", "+", a_3, "* X3")
     print(et)
     print(maximum)
+    t1_stop = tm.perf_counter()
+    elapsed_time = t1_stop - t1_start
+    time = PrettyTable()
+    time.field_names = ['Час виконання програми', elapsed_time]
+    print(time)
+
+
 
 
 if __name__ == "__main__":
