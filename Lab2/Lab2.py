@@ -59,7 +59,7 @@ def rmnvsk_cr():
             break
     return max(r_uv) <= rmnvsk_value
 
-while not rmnvsk_cr():
+while rmnvsk_cr():
     for i in y_lists:
         i.append((randint(y_min, y_max)))
     m += 1
