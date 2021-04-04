@@ -158,7 +158,7 @@ def main():
     else:
         print('Дисперсія неоднорідна')
         exit()
-
+    b_list = [b0, b1, b2, b3]
     # Оцінка значимості коефіцієнтів регресії згідно критерію Стьюдента
     s2b = sum(dispersion) / N
     s2bs_avg = s2b / (N * m)
@@ -171,18 +171,21 @@ def main():
 
     beta_arr = [beta0, beta1, beta2, beta3]
     t_arr = [abs(beta_arr[i]) / sb for i in range(4)]
+    t_arr = [round(b_list[i]) for i in range(len(b_list))]
 
     # f3 = f1*f2 = 2*4 = 8
     # З таблиці беремо значення 2.306
     indexes = []
+    unk_koef = []
     for i, v in enumerate(t_arr):
         if t_arr[i] > 2.306:
             indexes.append(i)
         else:
-            print(f'Коефіцієнт b{i} = {v} приймаємо не значним')
+            unk_koef.append(i)
+            print(f'Коефіцієнт b{i} = {b_list[i]} приймаємо не значним')
     ind = [i for i in range(N)]
 
-    b_list = [b0, b1, b2, b3]
+
     print(f'y = b{ind[0]}')
 
     b_res = [b_list[ind[0]] for _ in range(4)]
@@ -202,7 +205,12 @@ def main():
     else:
         print('Рівняння регресії адекватно оригіналу при рівні значимості 0.05')
 
+    print('Таблиця незначних коефіцієнтів:')
+    koef_table = PrettyTable()
+    koef_table.field_names = [f'b{i}' for i in unk_koef]
+    koef_table.add_row([b_list[i] for i in unk_koef])
+    print(koef_table)
+
 
 if __name__ == '__main__':
     main()
-
